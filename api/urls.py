@@ -4,10 +4,10 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
     url(r'^api/messages$', views.message_list),
+    url(r'^api/users$', views.user_list, name='user_list'),
     url(r'^api/users/([0-9]+)/messages/received$', views.user_received_message_list),
     url(r'^api/users/([0-9]+)/messages/sent$', views.user_sent_message_list),
     path('', include(router.urls)),

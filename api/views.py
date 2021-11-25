@@ -12,6 +12,22 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 @api_view(['GET', 'POST'])
+def user_list(request):
+    if request.method == 'GET':
+        users = User.objects.all()
+        
+        user_serializer = UserSerializer(users, many=True)
+        return JsonResponse(user_serializer.data, safe=False)
+ 
+    elif request.method == 'POST':
+        user_data = JSONParser().parse(request)
+        user_serializer = UserSerializer(data=user_data)
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return JsonResponse(user_serializer.data, status=status.HTTP_201_CREATED) 
+        return JsonResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST'])
 def message_list(request):
     if request.method == 'GET':
         messages = Message.objects.all()
