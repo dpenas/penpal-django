@@ -1,0 +1,4 @@
+./penpals/__pycache__
+./data
+./api/__pycache__
+./api/migrations/__pycache__

@@ -44,15 +44,15 @@ def message_list(request):
         return JsonResponse(message_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def user_received_message_list(request, id):
-	messages = Message.objects.filter(to_user=id)
+def user_received_message_list(request, user_id):
+	messages = Message.objects.filter(to_user=user_id)
 	messages_serializer = MessageSerializer(messages, many=True)
 
 	return JsonResponse(messages_serializer.data, safe=False)
 
 @api_view(['GET'])
-def user_sent_message_list(request, id):
-	messages = Message.objects.filter(from_user=id)
+def user_sent_message_list(request, user_id):
+	messages = Message.objects.filter(from_user=user_id)
 	messages_serializer = MessageSerializer(messages, many=True)
 
 	return JsonResponse(messages_serializer.data, safe=False)
