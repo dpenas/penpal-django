@@ -1,4 +1,8 @@
-penpals/__pycache__
 data
+penpals/__pycache__
 api/__pycache__
 api/migrations/__pycache__
+api/views/__pycache__
+api/tests/__pycache__
+api/models/__pycache__
+api/serializers/__pycache__
