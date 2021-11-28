@@ -2,6 +2,11 @@
 
 This API is made with the idea of finding people to talk to in other languages.
 
+## Usage
+If you have Docker installed locally, run `docker-compose up -d` on the main folder.
+Create a DB called `penpals` on postgres and run the migrations inside the web container: `python manage.py migrate`
+Copy the `.env.example` from the project and name it, in the same folder, as `.env` 
+
 ## Current endpoints
 - *api/users/* - POST and GET endpoint for creating and retrieving the users.
 - *api/users/{id}/messages/sent* - GET endpoint to retrieve the messages that the user has sent.
